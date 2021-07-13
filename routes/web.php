@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,5 +19,7 @@ Route::get('/', function () {
 });
 
 Auth::routes(['register' => false]);
+
+Route::view('admin/index', 'admin/index')->name('admin.index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
