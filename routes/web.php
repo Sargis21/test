@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,10 @@ Route::get('/', function () {
 
 Auth::routes(['register' => false]);
 
-Route::view('admin/index', 'admin/index')->name('admin.index');
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::view('index', 'admin/index')->name('admin.index');
+    Route::resource('department', DepartmentController::class);
+});
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
