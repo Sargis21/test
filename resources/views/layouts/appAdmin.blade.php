@@ -23,11 +23,11 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a @if(request()->is('admin/employee') || request()->is('admin/employee/*')) style="color: green"  @endif class="navbar-brand" href="{{ route('employee.index') }}">
+                    Employee
                 </a>
 
-                <a class="navbar-brand" href="{{ route('department.index') }}">
+                <a @if(request()->is('admin/department') || request()->is('admin/department/*')) style="color: green"  @endif class="navbar-brand" href="{{ route('department.index') }}">
                     Department
                 </a>
 

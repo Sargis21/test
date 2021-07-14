@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\DepartmentController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +25,7 @@ Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::view('index', 'admin/index')->name('admin.index');
     Route::resource('department', DepartmentController::class);
+    Route::resource('employee', EmployeeController::class);
 });
 
 
