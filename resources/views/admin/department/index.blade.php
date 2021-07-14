@@ -37,8 +37,8 @@
                 <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->name }}</td>
-                    <td>{{ $item->EmployeeCount }}</td>
-                    <td>{{ $item->MaximumEarnings }}</td>
+                    <td>{{ $item->employee_count }}</td>
+                    <td>{{ $item->employee->max('wage') ?? 0}}</td>
                     <td><a class="btn btn-primary" href="{{ route('department.edit', $item->id) }}">edit</a></td>
                     <td>
                         <form action="{{ route('department.destroy', $item->id) }}" method="POST">

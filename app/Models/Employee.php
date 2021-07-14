@@ -22,6 +22,7 @@ class Employee extends Model
             return $item;
         } catch (Exception $e) {
             DB::rollBack();
+            dd($e);
             return false;
         }
     }
@@ -32,10 +33,6 @@ class Employee extends Model
             DB::beginTransaction();
             $model->update($request->validated());
             $model->department()->sync($request->department);
-            $departments = Department::all();
-            foreach ($departments as $department) {
-                $department->update(['MaximumEarnings' => $department->employee->max('wage')]);
-            }
             DB::commit();
             return $model;
         } catch (Exception $e) {

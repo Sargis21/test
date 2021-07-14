@@ -17,8 +17,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        $items = Department::orderByDesc('id')->get();
-//        $items = DB::select('SELECT * FROM departments ORDER BY id DESC');
+        $items = Department::withCount('employee')->with('employee')->orderByDesc('id')->get();
         return view('admin.department.index', compact('items'));
     }
 

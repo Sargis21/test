@@ -24,8 +24,8 @@ Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::view('index', 'admin/index')->name('admin.index');
-    Route::resource('department', DepartmentController::class);
-    Route::resource('employee', EmployeeController::class);
+    Route::resource('department', DepartmentController::class, ['except' => [ 'show' ]]);
+    Route::resource('employee', EmployeeController::class, ['except' => [ 'show' ]]);
 });
 
 

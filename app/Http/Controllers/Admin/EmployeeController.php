@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Department;
 use App\Models\Employee;
-use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -48,16 +47,6 @@ class EmployeeController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Employee  $employee
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Employee $employee)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -101,7 +90,6 @@ class EmployeeController extends Controller
             $employee->delete();
             return back()->with(['name' => 'deleted ' . $employeeName]);
         } catch (\Exception $e) {
-            dd($e);
             return back()->with(['error' => 'Server error']);
         }
     }
