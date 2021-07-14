@@ -17,8 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-//        $items = Department::orderByDesc('id')->get();
-        $items = DB::select('SELECT * FROM departments ORDER BY id DESC');
+        $items = Department::orderByDesc('id')->get();
+//        $items = DB::select('SELECT * FROM departments ORDER BY id DESC');
         return view('admin.department.index', compact('items'));
     }
 
@@ -88,6 +88,9 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
+        if(count($department->employee)) {
+            return back()->with(['error' => 'You cannot delete a departments that has a employee']);
+        }
         $name = $department->name;
         $department->delete();
         return redirect()->route('department.index')->with(['name' => 'Deleted ' . $name]);

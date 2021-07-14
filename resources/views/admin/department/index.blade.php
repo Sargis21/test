@@ -9,6 +9,16 @@
             </button>
         </div>
     @endif
+
+    @if (session()->has('error'))
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Error!</strong> {{ session()->get('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-md-9">
             <table class="table table-striped">
@@ -34,7 +44,7 @@
                         <form action="{{ route('department.destroy', $item->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-danger">delete</button>
+                            <button @if(count($item->employee)) disabled @endif class="btn btn-danger">delete</button>
                         </form>
                     </td>
                 </tr>

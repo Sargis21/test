@@ -1,6 +1,8 @@
 @extends('layouts.appAdmin')
 
 @section('content')
+
+
     @if (session()->has('name'))
         <div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Successfully!</strong> {{ session()->get('name') }}

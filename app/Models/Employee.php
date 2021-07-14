@@ -18,7 +18,6 @@ class Employee extends Model
         try {
             DB::beginTransaction();
             $item = self::create($request->validated());
-            $item->department()->attach($request->department);
             DB::commit();
             return $item;
         } catch (Exception $e) {
@@ -33,6 +32,10 @@ class Employee extends Model
             DB::beginTransaction();
             $model->update($request->validated());
             $model->department()->sync($request->department);
+            $departments = Department::all();
+            foreach ($departments as $department) {
+                $department->update(['MaximumEarnings' => $department->employee->max('wage')]);
+            }
             DB::commit();
             return $model;
         } catch (Exception $e) {

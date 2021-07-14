@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\EmployeeRequest;
 use App\Models\Department;
 use App\Models\Employee;
@@ -97,7 +98,6 @@ class EmployeeController extends Controller
     {
         try {
             $employeeName = $employee->name;
-            $employee->department()->sync([]);
             $employee->delete();
             return back()->with(['name' => 'deleted ' . $employeeName]);
         } catch (\Exception $e) {

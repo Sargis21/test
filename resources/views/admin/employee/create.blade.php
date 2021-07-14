@@ -1,7 +1,14 @@
 @extends('layouts.appAdmin')
 
 @section('content')
-
+    @if (count($departments) == 0)
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Warning!</strong> Make sure you have a department before adding a employee
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
     <div class="container">
         @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -64,7 +71,7 @@
                     <div style="color: red" class="error">{{ $errors->first('floor') }}</div>
                 @endif
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button @if(count($departments)  == 0) disabled @endif type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
 

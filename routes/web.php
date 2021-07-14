@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Admin\DepartmentController;
-use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Admin\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
