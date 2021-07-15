@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\DepartmentRequest;
 use App\Models\Department;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
@@ -43,16 +42,6 @@ class DepartmentController extends Controller
         return redirect()->route('department.index')->with(['name' => 'Increased ' . $item->name]);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Department  $department
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Department $department)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
